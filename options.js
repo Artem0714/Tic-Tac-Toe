@@ -1,5 +1,8 @@
-for (let i = 0; i < 9; i++) {
-    document.body.insertAdjacentHTML('beforeend', '<input id = "elem" type = "button">  </input>');
+for (let i = 0; i < 16; i++) {
+    const element = document.createElement('input');
+    element.id = "elem";
+    element.type = "button";
+    document.querySelector('div').append(element);    
 }
 
 const buttons = document.querySelectorAll('input')
@@ -19,10 +22,42 @@ buttons.forEach(elem => {
         } else {
             elem.value = '×';
         };
-        console.log(bumButton)
+        let perem = document.getElementsByTagName('input')
+        console.log (perem)
+
+        checkWinner ();
         // if (orderMove.motion > 6) {
         //     if ()
         // }
         // document.querySelector('#elem').style.color = 'black';
     });
 });
+
+let kol = 16;
+let kolnow = Math.sqrt(kol);
+let ST = [];
+
+
+for (let i = 0; i < 2*kolnow+2; i++ ) {
+    ST.push([]);
+    if (i < kolnow) {
+        for (let k = 0; k < kolnow; k++) {
+            ST[i].push(k+kolnow*i);
+        };
+    } else if (i < 2*kolnow) {
+        for (let k = 0; k < kolnow; k++) {
+            ST[i].push(kolnow*k+i-kolnow);
+        };
+    } else if (i < 2*kolnow+1) {
+        for (let k = 0; k < kolnow; k++) {
+            ST[i].push(k+kolnow*k);
+        };
+    } else {
+        for (let k = 0; k < kolnow; k++) {
+            ST[i].push((kolnow-1)*(k+1));
+        };
+    };
+    
+};
+
+console.log(ST);
