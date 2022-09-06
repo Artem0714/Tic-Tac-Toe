@@ -1,63 +1,69 @@
-for (let i = 0; i < 16; i++) {
+const countRows = 4;
+const count = countRows*countRows;
+const countWinnerComb = 2*countRows+2;
+let winnerComb = [];
+
+for (let i = 0; i < 2*countRows+2; i++ ) {
+    winnerComb.push([]);
+    if (i < countRows) {
+        for (let k = 0; k < countRows; k++) {
+            winnerComb[i].push(k+countRows*i);
+        };
+    } else if (i < 2*countRows) {
+        for (let k = 0; k < countRows; k++) {
+            winnerComb[i].push(countRows*k+i-countRows);
+        };
+    } else if (i < 2*countRows+1) {
+        for (let k = 0; k < countRows; k++) {
+            winnerComb[i].push(k+countRows*k);
+        };
+    } else {
+        for (let k = 0; k < countRows; k++) {
+            winnerComb[i].push((countRows-1)*(k+1));
+        };
+    };    
+};
+
+for (let i = 0; i < count; i++) {
     const element = document.createElement('input');
     element.id = "elem";
     element.type = "button";
     document.querySelector('div').append(element);    
-}
+};
 
 const buttons = document.querySelectorAll('input')
 const orderMove = {
     motion: 0
 };
-const bumButton = document.querySelectorAll('#num')
-
 
 buttons.forEach(elem => {
     elem.addEventListener('click', function getValue() {
         orderMove.motion += 1;
-        if (orderMove.motion > 9) {
+        if (orderMove.motion > count) {
             alert('Игра закончена!')
         } else if (orderMove.motion % 2 === 0) {
             elem.value = '○';
         } else {
             elem.value = '×';
         };
-        let perem = document.getElementsByTagName('input')
-        console.log (perem)
-
-        checkWinner ();
-        // if (orderMove.motion > 6) {
-        //     if ()
-        // }
-        // document.querySelector('#elem').style.color = 'black';
+        checkWinner()
     });
 });
 
-let kol = 16;
-let kolnow = Math.sqrt(kol);
-let ST = [];
+function checkWinner() {
+    winnerComb.forEach((winCount) => {
+        let isWinX = true;
+        let isWinO = true;
 
-
-for (let i = 0; i < 2*kolnow+2; i++ ) {
-    ST.push([]);
-    if (i < kolnow) {
-        for (let k = 0; k < kolnow; k++) {
-            ST[i].push(k+kolnow*i);
-        };
-    } else if (i < 2*kolnow) {
-        for (let k = 0; k < kolnow; k++) {
-            ST[i].push(kolnow*k+i-kolnow);
-        };
-    } else if (i < 2*kolnow+1) {
-        for (let k = 0; k < kolnow; k++) {
-            ST[i].push(k+kolnow*k);
-        };
-    } else {
-        for (let k = 0; k < kolnow; k++) {
-            ST[i].push((kolnow-1)*(k+1));
-        };
-    };
-    
+        winCount.forEach((winCountItem) => {
+            isWinX = isWinX && buttons[winCountItem].value === "×";
+            isWinO = isWinO && buttons[winCountItem].value === "○";
+        });
+  
+        if (isWinX) {
+            winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
+        } else if (isWinO) {
+            winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
+        }
+    });
 };
-
-console.log(ST);
