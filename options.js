@@ -2,6 +2,9 @@ const countRows = 3;
 const count = countRows*countRows;
 const countWinnerComb = 2*countRows+2;
 let winnerComb = [];
+let victory = false;
+
+
 
 for (let i = 0; i < 2*countRows+2; i++ ) {
     winnerComb.push([]);
@@ -28,6 +31,7 @@ for (let i = 0; i < count; i++) {
     const element = document.createElement('input');
     element.id = "elem";
     element.type = "button";
+    element.style.setProperty('--countRows', countRows);
     document.querySelector('div').append(element);    
 };
 
@@ -39,9 +43,8 @@ const orderMove = {
 buttons.forEach(elem => {
     elem.addEventListener('click', function getValue() {
         orderMove.motion += 1;
-        if (orderMove.motion > count) {
-            alert('Игра закончена!')
-        } else if (orderMove.motion % 2 === 0) {
+        if (elem.value) {
+        } else if (orderMove.motion % 2 === 0 ) {
             elem.value = '○';
         } else {
             elem.value = '×';
@@ -59,11 +62,13 @@ function checkWinner() {
             isWinX = isWinX && buttons[winCountItem].value === "×";
             isWinO = isWinO && buttons[winCountItem].value === "○";
         });
-  
-        if (isWinX) {
+
+        if (isWinX && victory == false) {
             winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
-        } else if (isWinO) {
+            victory = true;
+        } else if (isWinO && victory == false) {
             winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
+            victory = true;
         };
     });
 };

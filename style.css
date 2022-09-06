@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+
 body {
     font-family: 'Roboto', sans-serif;
     text-align: center; 
@@ -12,18 +13,21 @@ body {
 
 input {
     background-color:white;
-    height: 100px;
-    width: 100px;
+    height: calc(400px/var(--countRows));
+    width: calc(400px/var(--countRows));
     font-size: 65px;
-    margin: 2px ;
+    margin: 2px;
+    color: black;
+    border: 0 black 2px;
     padding: 0;
     vertical-align: top;
 }
  
 .field {
     width: calc(50%);
-    height: calc(50%);
+    height: calc(80%);
     margin: 0 auto;
     padding: 0px;
+    position: relative;
 }
 
