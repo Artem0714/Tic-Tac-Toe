@@ -1,4 +1,4 @@
-const countRows = 4;
+const countRows = 3;
 const count = countRows*countRows;
 const countWinnerComb = 2*countRows+2;
 let winnerComb = [];
@@ -64,6 +64,6 @@ function checkWinner() {
             winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
         } else if (isWinO) {
             winCount.forEach((winCountItem) => { buttons[winCountItem].style.color ='green' });
-        }
+        };
     });
 };
