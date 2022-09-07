@@ -42,12 +42,13 @@ const orderMove = {
 
 buttons.forEach(elem => {
     elem.addEventListener('click', function getValue() {
-        orderMove.motion += 1;
         if (elem.value) {
-        } else if (orderMove.motion % 2 === 0 ) {
+        } else if (orderMove.motion % 2 != 0 ) {
             elem.value = '○';
+            orderMove.motion += 1;
         } else {
             elem.value = '×';
+            orderMove.motion += 1;
         };
         checkWinner()
     });

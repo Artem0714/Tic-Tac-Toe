@@ -2,7 +2,7 @@
 
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Courier';
     text-align: center; 
     padding: 0;
 }
@@ -15,13 +15,13 @@ input {
     background-color:white;
     height: calc(400px/var(--countRows));
     width: calc(400px/var(--countRows));
-    font-size: 65px;
-    flex: 0 1 auto;
     margin: 2px;
+    padding: 0;
     color: black;
     border: 0 black 2px;
-    padding: 0;
+    text-align: middle;
     vertical-align: top;
+    font-size: calc(210px/var(--countRows));
 }
  
 .field {
