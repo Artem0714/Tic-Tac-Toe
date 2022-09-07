@@ -16,6 +16,7 @@ input {
     height: calc(400px/var(--countRows));
     width: calc(400px/var(--countRows));
     font-size: 65px;
+    flex: 0 1 auto;
     margin: 2px;
     color: black;
     border: 0 black 2px;
@@ -24,8 +25,8 @@ input {
 }
  
 .field {
-    width: calc(50%);
-    height: calc(80%);
+    width: calc(400px + (var(--countRows)*4px));
+    height: calc(400px + (var(--countRows)*4px));
     margin: 0 auto;
     padding: 0px;
     position: relative;

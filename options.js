@@ -1,9 +1,9 @@
-const countRows = 3;
+const countRows = 5;
 const count = countRows*countRows;
 const countWinnerComb = 2*countRows+2;
 let winnerComb = [];
 let victory = false;
-
+document.querySelector('div').style.setProperty('--countRows', countRows);
 
 
 for (let i = 0; i < 2*countRows+2; i++ ) {
